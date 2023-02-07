@@ -1,0 +1,38 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  height: 90vh;
+  padding: 11px 12px;
+  position: fixed;
+  font-family: Roboto, Arial, sans-serif;
+  overflow: hidden;
+  &:hover {
+    overflow-y: scroll;
+  }
+  &__hr {
+    border-top: 1px;
+    margin: 1rem 0.1rem;
+  }
+  &__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    &:hover {
+      background-color: #272727;
+    }
+  }
+  &__icon {
+    color: white;
+  }
+  &__text {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Roboto, Arial, sans-serif;
+    margin-left: 24px;
+  }
+}
