@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/header/header.component";
-import SidebarOpen from "./components/SidebarOpen/sidebar.component";
-import SidebarClose from "./components/SidebarClose/sidebarclose.component";
-import HomePage from "./components/HomePage/homepage.component";
+import SidebarOpen from "./components/sidebaropen/sidebar.component";
+import SidebarClose from "./components/sidebarclose/sidebarclose.component";
+import HomePage from "./components/homepage/homepage.component";
+import Container from "./components/container/container.component";
 import "./App.scss";
 
 function App() {
+  const [open, setOpen] = useState(true);
   return (
     <>
-      <Header />
-      <SidebarOpen />
-      {/* <SidebarClose /> */}
-      {/* <HomePage /> */}
+      <Header setOpen={setOpen} open={open} />
+      <>{open ? <SidebarOpen /> : <SidebarClose />}</>
+
+      <Container open={open}>
+        <HomePage />
+      </Container>
     </>
   );
 }

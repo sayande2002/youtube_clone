@@ -148,9 +148,7 @@ const SidebarOpen = () => {
       </div>
       <hr className="sidebar__hr" />
       <p>
-        About Press Copyright Contact usCreato rAdvertise Developers Terms
-        Privacy Policy & Safety How YouTube worksTest new features <br /> © 2023
-        Google LLC
+        About Press Copyright Contact us <br /> <br />© 2023 Google LLC
       </p>
     </div>
   );

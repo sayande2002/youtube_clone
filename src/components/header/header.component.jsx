@@ -7,11 +7,11 @@ import KeyboardVoiceRoundedIcon from "@mui/icons-material/KeyboardVoiceRounded";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import Image from "../../assests/CircleImage.png";
-const Header = () => {
+const Header = ({ open, setOpen }) => {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__left">
-        <div className="header__left__menu">
+        <div className="header__left__menu" onClick={() => setOpen(!open)}>
           <MenuRoundedIcon />
         </div>
         <Logo className="header__left__yticon" />
@@ -38,7 +38,7 @@ const Header = () => {
           <img src={Image} alt="" className="image" />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
