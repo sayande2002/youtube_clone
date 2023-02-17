@@ -1,0 +1,48 @@
+.video {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 8px;
+  width: 25%;
+  cursor: pointer;
+  font-family: Roboto, Arial, sans-serif;
+  &__image {
+    border-radius: 10px;
+  }
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+  }
+  &__thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+  }
+  &__title {
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: start;
+  }
+  &__channel {
+    font-weight: 100;
+    font-size: 13px;
+    color: #a5a5a5;
+  }
+  &__views {
+    font-weight: 100;
+    font-size: 13px;
+    color: #a5a5a5;
+  }
+  &__time {
+    font-weight: 100;
+    font-size: 13px;
+    color: #a5a5a5;
+  }
+}

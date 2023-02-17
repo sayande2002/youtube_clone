@@ -9,4 +9,3 @@ const Container = ({ open, children }) => {
 };
 
 export default Container;
-// {open ? "container" : "container--close"}
