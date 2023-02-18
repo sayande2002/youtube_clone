@@ -4,6 +4,7 @@ import SidebarOpen from "./components/sidebaropen/sidebar.component";
 import SidebarClose from "./components/sidebarclose/sidebarclose.component";
 import HomePage from "./screens/homepage/homepage.component";
 import Container from "./components/container/container.component";
+import SearchPage from "./screens/searchpage/searchpage.component";
 import "./App.scss";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
       <>{open ? <SidebarOpen /> : <SidebarClose />}</>
 
       <Container open={open}>
-        <HomePage />
+        <SearchPage />
       </Container>
     </>
   );
