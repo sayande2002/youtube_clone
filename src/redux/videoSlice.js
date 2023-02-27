@@ -8,7 +8,7 @@ const initialState = {
 };
 export const fetchPopularVideos = createAsyncThunk(
   "homeVideos/fetchVideo",
-  async (dispatch) => {
+  async () => {
     try {
       const { data } = await request("/videos", {
         params: {
@@ -19,7 +19,12 @@ export const fetchPopularVideos = createAsyncThunk(
           pageToken: "",
         },
       });
-      return data.items;
+
+      return {
+        videos: data.items,
+        nextPageToken: data.nextPageToken,
+        category: "All",
+      };
     } catch (error) {
       console.log(error.message);
     }
@@ -37,7 +42,9 @@ const homevideo = createSlice({
       })
       .addCase(fetchPopularVideos.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.videos = action.payload;
+        state.videos = action.payload.videos;
+        state.nextPageToken = action.payload.nextPageToken;
+        state.activeCategory = action.payload.category;
       })
       .addCase(fetchPopularVideos.rejected, (state, action) => {
         state.isLoading = false;
