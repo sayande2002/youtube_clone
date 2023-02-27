@@ -36,12 +36,16 @@
     padding: 8px 20px;
     cursor: pointer;
     border-radius: 10px;
+
     &:hover {
+      background-color: #272727;
+    }
+    &--active {
       background-color: #272727;
     }
   }
   &__icon {
-    color: white;
+    // color: white;
   }
   &__text {
     color: white;

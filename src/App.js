@@ -15,7 +15,7 @@ function App() {
       <>{open ? <SidebarOpen /> : <SidebarClose />}</>
 
       <Container open={open}>
-        <SearchPage />
+        <HomePage />
       </Container>
     </>
   );
