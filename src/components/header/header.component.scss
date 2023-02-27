@@ -6,7 +6,7 @@
   top: 0;
   width: 100%;
   z-index: 999;
-  padding: 0.7rem;
+  padding: 0rem 0.9rem;
   background-color: #0f0f0f;
   // Header Left
   &__left {
@@ -33,12 +33,11 @@
   // Header Center
   &__center {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin: auto;
     &__search_box {
       display: flex;
-      border: 0.2px solid #2b2b2b;
+      border: 0.2px solid #434343;
       width: 600px;
       height: 40px;
       border-radius: 20px;
@@ -78,7 +77,7 @@
         .search__icon {
           color: white;
           background-color: #222222;
-          margin: auto;
+          // margin: auto;
           border-radius: 50%;
         }
       }

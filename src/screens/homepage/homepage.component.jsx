@@ -4,14 +4,14 @@ import Topbar from "../../components/topbar/topbar.component";
 import Video from "../../components/video/video.component";
 import Videoskeleton from "../../components/videoskeleton/videoskeleton.component";
 import { fetchPopularVideos } from "../../redux/videoSlice";
-
 import "./homepage.component.scss";
+
 const HomePage = () => {
   const { isLoading, videos } = useSelector((state) => state.homeVideos);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPopularVideos());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
