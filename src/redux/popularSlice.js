@@ -6,23 +6,23 @@ const initialState = {
   nextPageToken: null,
   activeCategory: "All",
 };
-export const getVideosByCategory = createAsyncThunk(
-  "categoryvideo/fetchVideo",
-  async (keyword, { getState }) => {
+export const getPopularVideos = createAsyncThunk(
+  "homeVideos/fetchVideo",
+  async () => {
     try {
-      const { data } = await request("/search", {
+      const { data } = await request("/videos", {
         params: {
-          part: "snippet",
-          q: keyword,
+          part: "snippet,contentDetails,statistics",
+          chart: "mostPopular",
+          regionCode: "IN",
           maxResults: 20,
-          pageToken: getState().homeVideos.nextPageToken,
-          type: "video",
+          pageToken: "",
         },
       });
       return {
         videos: data.items,
         nextPageToken: data.nextPageToken,
-        category: keyword,
+        category: "All",
       };
     } catch (error) {
       console.log(error.message);
@@ -30,25 +30,25 @@ export const getVideosByCategory = createAsyncThunk(
   }
 );
 
-const categoryvideo = createSlice({
-  name: "categoty",
+const homeVideoSlice = createSlice({
+  name: "homeVideos",
   initialState,
   reducer: {},
   extraReducers(builder) {
     builder
-      .addCase(getVideosByCategory.pending, (state, action) => {
+      .addCase(getPopularVideos.pending, (state, action) => {
         state.isLoading = true;
       })
-      .addCase(getVideosByCategory.fulfilled, (state, action) => {
+      .addCase(getPopularVideos.fulfilled, (state, action) => {
         state.isLoading = false;
         state.videos = action.payload.videos;
         state.nextPageToken = action.payload.nextPageToken;
-        state.category = action.payload.category;
+        state.activeCategory = action.payload.category;
       })
-      .addCase(getVideosByCategory.rejected, (state, action) => {
+      .addCase(getPopularVideos.rejected, (state, action) => {
         state.isLoading = false;
       });
   },
 });
 
-export default categoryvideo.reducer;
+export default homeVideoSlice.reducer;

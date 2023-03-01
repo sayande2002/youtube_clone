@@ -1,29 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Topbar from "../../components/topbar/topbar.component";
+import Category from "../../components/category/category.component";
 import Video from "../../components/video/video.component";
 import Videoskeleton from "../../components/videoskeleton/videoskeleton.component";
-import { fetchPopularVideos } from "../../redux/videoSlice";
+import { getPopularVideos } from "../../redux/popularSlice";
 import "./homepage.component.scss";
 
 const HomePage = () => {
-  const { isLoading, videos } = useSelector((state) => state.homeVideos);
+  const { videos, isLoading } = useSelector((state) => state.homeVideos);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPopularVideos());
+    dispatch(getPopularVideos());
   }, [dispatch]);
 
   return (
     <>
-      <Topbar />
+      <Category />
       <div className="home__videos">
-        {videos.map((video, i) =>
-          isLoading ? (
-            <Videoskeleton key={i} />
-          ) : (
-            <Video video={video} key={video.id} />
-          )
-        )}
+        {videos.map((video, i) => (
+          <Video video={video} key={video.id} />
+        ))}
       </div>
     </>
   );

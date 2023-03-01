@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import getVideosByCategory from "../../redux/getVideosByCategory";
-import "./topbar.component.scss";
+import getPopularVideos from "../../redux/popularSlice";
+import getCategoryVideos from "../../redux/categorySlice";
+import "./category.component.scss";
 const categories = [
   "All",
   "Movies",
@@ -21,15 +22,19 @@ const categories = [
   "Dubai",
   "Songs",
 ];
-const Topbar = () => {
+const Category = () => {
   const dispatch = useDispatch();
   const [activeElement, setActiveElement] = useState("All");
   const handleClick = (value) => {
     setActiveElement(value);
-    // dispatch(getVideosByCategory(value));
+    if (value === "All") {
+      dispatch(getPopularVideos());
+    } else {
+      dispatch(getCategoryVideos(value));
+    }
   };
   return (
-    <div className="topbar">
+    <div className="categories">
       {categories.map((value, i) => (
         <div
           className={activeElement === value ? "tags tags--active" : "tags"}
@@ -43,4 +48,4 @@ const Topbar = () => {
   );
 };
 
-export default Topbar;
+export default Category;

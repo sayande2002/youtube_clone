@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import homeVideosReducer from "./videoSlice";
-import categoryvideo from "./getVideosByCategory";
+import homeReducer from "./popularSlice";
+import categoryReducer from "./categorySlice";
 
 export const store = configureStore({
   reducer: {
-    homeVideos: homeVideosReducer,
-    categoryvideo,
+    homeVideos: homeReducer,
+    categoryVideos: categoryReducer,
   },
 });
