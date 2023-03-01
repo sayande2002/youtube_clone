@@ -5,7 +5,7 @@ import "./searchpage.component.scss";
 const SearchPage = () => {
   return (
     <div className="search__videos">
-      <hr className="search__hr" />
+      <hr />
       {[...Array(20)].map(() => (
         <SearchVideo />
       ))}
@@ -14,3 +14,5 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+
+// className="search__hr"

@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import getPopularVideos from "../../redux/popularSlice";
-import getCategoryVideos from "../../redux/categorySlice";
+import { getPopularVideos } from "../../redux/popularSlice";
+import { getCategoryVideos } from "../../redux/popularSlice";
 import "./category.component.scss";
 const categories = [
   "All",
   "Movies",
   "Podcasts",
   "React",
-  "Redux",
   "India",
+  "Messi",
+  "Ronaldo",
+  "Neymar",
   "Politics",
-  "Computer Programming",
   "Science",
   "USA",
   "UK",

@@ -17,9 +17,11 @@ const HomePage = () => {
     <>
       <Category />
       <div className="home__videos">
-        {videos.map((video, i) => (
-          <Video video={video} key={video.id} />
-        ))}
+        {!isLoading
+          ? videos.map((video) => (
+              <Video video={video} key={video.id.videoId} />
+            ))
+          : [...new Array(20)].map(() => <Videoskeleton />)}
       </div>
     </>
   );

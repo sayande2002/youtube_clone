@@ -8,7 +8,7 @@ const initialState = {
 };
 export const getPopularVideos = createAsyncThunk(
   "homeVideos/fetchVideo",
-  async () => {
+  async (_, { getState }) => {
     try {
       const { data } = await request("/videos", {
         params: {
@@ -16,7 +16,7 @@ export const getPopularVideos = createAsyncThunk(
           chart: "mostPopular",
           regionCode: "IN",
           maxResults: 20,
-          pageToken: "",
+          pageToken: getState().homeVideos.nextPageToken,
         },
       });
       return {
@@ -25,7 +25,31 @@ export const getPopularVideos = createAsyncThunk(
         category: "All",
       };
     } catch (error) {
-      console.log(error.message);
+      console.log("getPopularVideos", error.message);
+    }
+  }
+);
+
+export const getCategoryVideos = createAsyncThunk(
+  "homeVideos/fetchVideo",
+  async (keyword, { getState }) => {
+    try {
+      const { data } = await request("/search", {
+        params: {
+          part: "snippet",
+          maxResults: 20,
+          pageToken: getState().homeVideos.nextPageToken,
+          q: keyword,
+          type: "video",
+        },
+      });
+      return {
+        videos: data.items,
+        nextPageToken: data.nextPageToken,
+        category: keyword,
+      };
+    } catch (error) {
+      console.log("getCategoryVideos", error.message);
     }
   }
 );

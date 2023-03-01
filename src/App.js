@@ -1,10 +1,10 @@
 import React from "react";
-import HomePage from "./screens/homepage/homepage.component";
-import Layout from "./components/layout/layout.component";
-import SearchPage from "./screens/searchpage/searchpage.component";
 import { Route, Routes } from "react-router-dom";
+import Layout from "./components/layout/layout.component";
+import HomePage from "./screens/homepage/homepage.component";
+import SearchPage from "./screens/searchpage/searchpage.component";
+import Watchpage from "./screens/watchpage/watchpage.component";
 import "./App.scss";
-
 function App() {
   return (
     <Routes>
@@ -21,6 +21,14 @@ function App() {
         element={
           <Layout>
             <SearchPage />
+          </Layout>
+        }
+      ></Route>
+      <Route
+        path="/watch"
+        element={
+          <Layout>
+            <Watchpage />
           </Layout>
         }
       ></Route>
